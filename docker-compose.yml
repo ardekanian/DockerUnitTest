@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  webiste:
+    build:
+      context: .
+      dockerfile: website.dockerfile
+    ports: 
+      - 80:80
+  unit-tests:
+    volumes: 
+      - "$PWD:/app"
+    image:
+      build: 
+        context: .
+        dockerfile: rspec.dockerfile
+        
+
