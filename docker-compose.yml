@@ -1,6 +1,6 @@
 version: '3.2'
 services:
-  webiste:
+  website:
     build:
       context: .
       dockerfile: website.dockerfile
@@ -9,9 +9,11 @@ services:
   unit-tests:
     volumes: 
       - "$PWD:/app"
-    image:
-      build: 
-        context: .
-        dockerfile: rspec.dockerfile
+    build: 
+      context: .
+      dockerfile: rspec.dockerfile
+    command:
+      - --pattern
+      - spec/unit/*_spec.rb
         
 
